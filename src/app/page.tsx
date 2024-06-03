@@ -15,8 +15,6 @@ interface CounterAdderProps {
   setCounters: Dispatch<SetStateAction<CounterType[] | null>>;
 }
 
-export const CounterContext = React.createContext<any>(null);
-
 export default function Page() {
   const [counters, setCounters] = useState<CounterType[] | null>(null);
   useEffect(() => {
@@ -45,3 +43,4 @@ export default function Page() {
     </CounterContext.Provider>
   );
 }
+export const CounterContext = React.createContext<any>(null);

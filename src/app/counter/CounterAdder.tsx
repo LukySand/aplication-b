@@ -11,7 +11,7 @@ export default function CounterAdder() {
   const [colorSelector, setColorSelector] = useState(false);
   async function addCounter(color: string) {
     const CounterArray = await getData();
-    console.log(CounterArray);
+    // console.log(CounterArray);
     if (CounterArray.length >= 10) {
       return;
     }
