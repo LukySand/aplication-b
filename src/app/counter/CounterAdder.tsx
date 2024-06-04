@@ -1,11 +1,26 @@
 "use client";
 import { getData, postData } from "./counterLogic";
-import { useContext, useState } from "react";
+import { useContext, useState, Dispatch, SetStateAction } from "react";
 import { CounterType } from "../page";
-import { CounterContext } from "../page";
+// import { CounterContext } from "../page";
 
-export default function CounterAdder() {
-  const [counters, setCounters] = useContext(CounterContext);
+// interface CounterAdderProps {
+//   setCounters: Dispatch<SetStateAction<CounterType[] | null>>;
+// }
+
+// interface CounterContextType {
+//   counters: CounterType[] | null;
+//   setCounters: Dispatch<SetStateAction<CounterType[] | null>>;
+// }
+
+export default function CounterAdder({
+  setCounters,
+}: {
+  setCounters: Dispatch<SetStateAction<CounterType[] | null>>;
+}) {
+  // const { counters, setCounters } = useContext(
+  //   CounterContext
+  // ) as CounterContextType;
 
   const [hover, setHover] = useState(false);
   const [colorSelector, setColorSelector] = useState(false);

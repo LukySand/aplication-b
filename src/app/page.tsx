@@ -11,9 +11,15 @@ export type CounterType = {
   color: string;
   __v: number;
 };
-interface CounterAdderProps {
+
+interface CounterContextType {
+  // counters: CounterType[] | null;
   setCounters: Dispatch<SetStateAction<CounterType[] | null>>;
 }
+
+// export const CounterContext = React.createContext<CounterContextType | null>(
+//   null
+// );
 
 export default function Page() {
   const [counters, setCounters] = useState<CounterType[] | null>(null);
@@ -27,20 +33,20 @@ export default function Page() {
   };
 
   return (
-    <CounterContext.Provider value={[counters, setCounters]}>
-      <div className="flex flex-wrap gap-2">
-        {counters?.map((counter, index) => (
-          <Counter key={index} counterData={counter} />
-        ))}
-        {counters ? (
-          counters.length < 10 ? (
-            <CounterAdder />
-          ) : null
-        ) : (
-          <CounterAdder />
-        )}
-      </div>
-    </CounterContext.Provider>
+    // <CounterContext.Provider value={{ counters, setCounters }}>
+    <div className="flex flex-wrap gap-2">
+      {counters?.map((counter, index) => (
+        <Counter key={index} counterData={counter} />
+      ))}
+      {counters ? (
+        counters.length < 10 ? (
+          <CounterAdder setCounters={setCounters} />
+        ) : null
+      ) : (
+        <CounterAdder setCounters={setCounters} />
+      )}
+    </div>
+    // </CounterContext.Provider>
   );
 }
-export const CounterContext = React.createContext<any>(null);
+// export const CounterContext = React.createContext<any>(null);
